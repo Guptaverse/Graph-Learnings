@@ -1,0 +1,1 @@
+{"name":"Local: CountConnectedComp","url":"c:\\Users\\Shiva\\Documents\\dsa\\random\\Graphs_Luv\\CountConnectedComp.cpp","tests":[{"id":1659137729748,"input":"8 5\n1 2\n2 3\n2 4\n3 5\n6 7","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\Shiva\\Documents\\dsa\\random\\Graphs_Luv\\CountConnectedComp.cpp","group":"local","local":true}

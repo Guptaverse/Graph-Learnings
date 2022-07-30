@@ -1,0 +1,1 @@
+{"name":"Local: 4","url":"c:\\Users\\Shiva\\Documents\\dsa\\random\\Graphs_Luv\\4.detect_cyclic.cpp","tests":[{"id":1659174591322,"input":"8 6\n1 2\n1 5\n2 3\n2 4\n3 4\n6 7","output":"1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\Shiva\\Documents\\dsa\\random\\Graphs_Luv\\4.detect_cyclic.cpp","group":"local","local":true}
