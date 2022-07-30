@@ -29,8 +29,14 @@ typedef unordered_map<ll,ll> omll;
 typedef unordered_map<int,int> omii;
 const int N = 1e5+10;
 
-// precomputation of subqueries in tree (like in this question : sum of every subtree and count even nodes in every subtree)
-
+// Diameter of generic tree DFS
+//Explaination : 
+/*
+1. find the deepest node using any node as root node
+2. then reset the depth array
+3. Now using the deepest node find the other deepest node
+4. this path will be the diameter
+*/
 /* 
 sample Input         
     13
@@ -47,40 +53,24 @@ sample Input
     4 10
     10 11
 
-output :
-// subtree_sum[] , even_ct[] 
-    91 6
-    40 4
-    37 2
-    34 2
-    38 3
-    6 1
-    7 0
-    20 2
-    9 0
-    21 1
-    11 0
-    12 1
-    13 0
+output : 8
+
 */
 vi g[N];
-vi subtree_sum(N);
-vi even_ct(N);
+vi d(N);
 
-void dfs(int sv,int parent){
+void dfs(int sv,int parent=-1){
     // Take action on vertex after entering the vertex
-    if(sv%2==0) even_ct[sv]++;
-    subtree_sum[sv]+=sv;
+
     for(int child:g[sv]){
         // Take action on child before entering the child node
         // **
         // cout<<"parent :"<<sv<<" , child : "<<child<<endl;
         if(child==parent) continue;
+        d[child] = d[sv]+1;
         dfs(child, sv);
         //**
         // Take action on child after exiting child node
-        subtree_sum[sv] +=  subtree_sum[child];
-        even_ct[sv] += even_ct[child];
     }
     // Take action on vertex before exiting the vertex
     
@@ -99,15 +89,26 @@ void normalsolver(){
 
     }
     dfs(1,0);
-    for(int i =1;i<=n;i++){
-        cout<<subtree_sum[i]<< " "<<even_ct[i]<<endl;
+
+    int mx_depth = -1;
+    int mx_d_node;
+    for(int i = 1;i<=n;i++){
+        if(mx_depth<d[i]){
+            mx_depth = d[i];
+            mx_d_node = i;
+        }
+        d[i]=0;
     }
-    // int q;cin>>q;
-    // while(q--){
-    //     int v;
-    //     cin>>v;
-    //     cout<<subtree_sum[v]<<" "<<even_ct[v]<<endl;
-    // }
+    dfs(mx_d_node);
+    mx_depth = -1;
+    for(int i =1;i<=n;i++){
+        if(mx_depth<d[i]){
+            mx_depth = d[i];
+        }
+    }
+    cout<<mx_depth<<endl;
+
+
 
 
 }
